@@ -4,46 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecrutravels - Your Ultimate Travel Companion</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- 
-      IMPORTANT: The Google Map is running in "development mode".
-      This allows the map to display without an API key, but it will have a watermark.
-      The Route Planning feature is DISABLED because it requires an API key.
-      
-      To enable routing and remove the watermark:
-      1. Get a key from the Google Cloud Console: https://console.cloud.google.com/
-      2. In your project, enable BOTH the "Maps JavaScript API" and the "Directions API".
-      3. Ensure billing is enabled for your project.
-      4. Add your key to the URL below like this: src=".../api/js?key=YOUR_API_KEY_HERE&callback=initMap"
-    -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-        }
-        .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1476514f25535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-        .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.6);
-            transition: opacity 0.3s ease-in-out;
-        }
-        .modal-content {
-            transition: transform 0.3s ease-in-out;
-        }
-        .card-hover-effect {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .card-hover-effect:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
 
@@ -51,9 +13,9 @@
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-indigo-600">
-                <i class="fas fa-paper-plane mr-2"></i>Lecrutravels
+                Lecrutravels
             </a>
-            <div class="hidden md:flex items-center space-x-6">
+            <div class="nav-links">
                 <a href="#home" class="text-gray-600 hover:text-indigo-600">Home</a>
                 <a href="#destinations" class="text-gray-600 hover:text-indigo-600">Destinations</a>
                 <a href="#booking" class="text-gray-600 hover:text-indigo-600">Booking</a>
@@ -94,9 +56,7 @@
                     <label for="checkout" class="block text-sm font-medium text-gray-700">Check-out Date</label>
                     <input type="date" id="checkout" name="checkout" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                 </div>
-                <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300">
-                    <i class="fas fa-search mr-2"></i>Search
-                </button>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300">Search</button>
             </form>
             <div id="search-result" class="text-center mt-4"></div>
         </section>
@@ -108,7 +68,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Destination Card 1 -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover-effect">
-                        <img src="https://images.unsplash.com/photo-1522093007474-d86e9bf7ba6f?q=80&w=2070&auto=format&fit=crop" alt="Paris" class="w-full h-56 object-cover">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 700'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230f172a'/%3E%3Cstop offset='55%25' stop-color='%231d4ed8'/%3E%3Cstop offset='100%25' stop-color='%23f59e0b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='700' fill='url(%23g)'/%3E%3Ccircle cx='930' cy='150' r='90' fill='%23fde68a' fill-opacity='.75'/%3E%3Cpath d='M610 80 648 270 570 270Z' fill='none' stroke='%23fff7ed' stroke-width='18' stroke-linejoin='round'/%3E%3Cpath d='M590 270H650L682 595H558Z' fill='%23fff7ed' fill-opacity='.92'/%3E%3Cpath d='M410 560H790' stroke='%23f8fafc' stroke-width='24' stroke-linecap='round'/%3E%3Cpath d='M360 605H840' stroke='%23e2e8f0' stroke-width='14' stroke-linecap='round'/%3E%3Ctext x='70' y='120' fill='%23ffffff' font-size='72' font-family='Arial, sans-serif' font-weight='700'%3EParis%3C/text%3E%3Ctext x='70' y='185' fill='%23e2e8f0' font-size='34' font-family='Arial, sans-serif'%3EEiffel skyline escape%3C/text%3E%3C/svg%3E" alt="Paris" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Paris, France</h3>
                             <p class="text-gray-600 mb-4">The city of love, lights, and art. Explore iconic landmarks like the Eiffel Tower and the Louvre.</p>
@@ -117,7 +77,7 @@
                     </div>
                     <!-- Destination Card 2 -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover-effect">
-                        <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?q=80&w=2070&auto=format&fit=crop" alt="Kyoto" class="w-full h-56 object-cover">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 700'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230f172a'/%3E%3Cstop offset='55%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%23fb7185'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='700' fill='url(%23g)'/%3E%3Ccircle cx='940' cy='150' r='92' fill='%23fecdd3' fill-opacity='.7'/%3E%3Cpath d='M260 580h680' stroke='%23f8fafc' stroke-width='24' stroke-linecap='round'/%3E%3Cpath d='M350 260h500l-60 105H410Z' fill='%23fff7ed' fill-opacity='.95'/%3E%3Cpath d='M390 365h420v215H390Z' fill='%23ffffff' fill-opacity='.9'/%3E%3Cpath d='M370 250h460l-40-65H410Z' fill='%23ffe4e6' fill-opacity='.88'/%3E%3Cpath d='M450 330h300' stroke='%23cbd5e1' stroke-width='10' stroke-linecap='round'/%3E%3Cpath d='M510 330v250' stroke='%23cbd5e1' stroke-width='10' stroke-linecap='round'/%3E%3Cpath d='M600 330v250' stroke='%23cbd5e1' stroke-width='10' stroke-linecap='round'/%3E%3Ctext x='70' y='120' fill='%23ffffff' font-size='72' font-family='Arial, sans-serif' font-weight='700'%3EKyoto%3C/text%3E%3Ctext x='70' y='185' fill='%23e2e8f0' font-size='34' font-family='Arial, sans-serif'%3ETemples and tranquil gardens%3C/text%3E%3C/svg%3E" alt="Kyoto" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Kyoto, Japan</h3>
                             <p class="text-gray-600 mb-4">Experience traditional Japan with its stunning temples, serene gardens, and graceful geishas.</p>
@@ -126,7 +86,7 @@
                     </div>
                     <!-- Destination Card 3 -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover-effect">
-                        <img src="https://media.istockphoto.com/id/166471469/photo/architecture-of-oia-town-on-santorini.jpg?s=612x612&w=0&k=20&c=hcr_qpS22AkPk2Kf0ERiUKXBrxBGvtgrbK3hq-vcKCk=" alt="Santorini" class="w-full h-56 object-cover">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 700'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230f172a'/%3E%3Cstop offset='52%25' stop-color='%230ea5e9'/%3E%3Cstop offset='100%25' stop-color='%23f59e0b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='700' fill='url(%23g)'/%3E%3Cpath d='M0 470h1200v230H0Z' fill='%230b1120' fill-opacity='.16'/%3E%3Cpath d='M240 470l140-115 140 115H240Z' fill='%23fff7ed' fill-opacity='.98'/%3E%3Cpath d='M420 470l145-125 145 125H420Z' fill='%23ffffff' fill-opacity='.94'/%3E%3Cpath d='M610 470l160-140 160 140H610Z' fill='%23fff7ed' fill-opacity='.98'/%3E%3Cpath d='M205 520h510' stroke='%23e2e8f0' stroke-width='20' stroke-linecap='round'/%3E%3Cpath d='M690 520h270' stroke='%23e2e8f0' stroke-width='20' stroke-linecap='round'/%3E%3Ccircle cx='910' cy='145' r='86' fill='%23fde68a' fill-opacity='.85'/%3E%3Ctext x='70' y='120' fill='%23ffffff' font-size='72' font-family='Arial, sans-serif' font-weight='700'%3ESantorini%3C/text%3E%3Ctext x='70' y='185' fill='%23e2e8f0' font-size='34' font-family='Arial, sans-serif'%3ESea views and sunset terraces%3C/text%3E%3C/svg%3E" alt="Santorini" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Santorini, Greece</h3>
                             <p class="text-gray-600 mb-4">Famous for its whitewashed villages, cliffside views, and breathtaking sunsets over the Aegean Sea.</p>
@@ -140,22 +100,38 @@
         <!-- Google Maps API Section -->
         <section id="map" class="py-16 bg-white">
             <div class="container mx-auto px-6">
+                <div class="section-eyebrow">Google Maps API + travel suggestions</div>
                 <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Interactive Map & Route Planning</h2>
-                <div class="bg-gray-200 rounded-lg shadow-lg overflow-hidden h-96 relative">
-                    <!-- Google Map will be initialized here -->
-                    <div id="google-map" class="w-full h-full"></div>
-                    <div class="absolute top-4 left-4 bg-white p-4 rounded-lg shadow-xl w-full max-w-sm">
-                        <h4 class="font-bold mb-2">Plan Your Route</h4>
+                <div class="map-shell">
+                    <div id="google-map" class="w-full h-full map-canvas" aria-label="Google Maps route preview"></div>
+                    <div id="map-status" class="hidden"></div>
+                    <div class="route-panel">
+                        <div class="route-panel__header">
+                            <h4>Plan your route</h4>
+                            <span class="route-panel__badge">Stops + stays</span>
+                        </div>
                         <div class="space-y-2">
                             <div>
                                 <label for="start-point" class="text-sm">Start</label>
-                                <input type="text" id="start-point" class="mt-1 block w-full border border-gray-300 rounded-md py-1 px-2 text-sm" placeholder="Your Location">
+                                <input type="text" id="start-point" class="mt-1 block w-full border border-gray-300 rounded-md py-1 px-2 text-sm" placeholder="Your location">
                             </div>
                             <div>
                                 <label for="end-point" class="text-sm">Destination</label>
                                 <input type="text" id="end-point" class="mt-1 block w-full border border-gray-300 rounded-md py-1 px-2 text-sm" placeholder="Paris, France">
                             </div>
                             <button id="show-route-btn" class="w-full bg-indigo-600 text-white text-sm py-2 mt-2 rounded-md hover:bg-indigo-700">Show Route</button>
+                            <a id="open-google-maps-link" class="route-open-link" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+                            <p id="route-summary" class="text-xs text-gray-600 mt-2"></p>
+                        </div>
+                        <div class="route-suggestions">
+                            <div class="suggestion-card">
+                                <h5>Suggested stopovers</h5>
+                                <ul id="stopover-list" class="suggestion-list"></ul>
+                            </div>
+                            <div class="suggestion-card">
+                                <h5>Best places to stay</h5>
+                                <ul id="stay-list" class="suggestion-list"></ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,9 +145,9 @@
             <p>&copy; 2023 Lecrutravels. All Rights Reserved.</p>
             <p class="mt-2 text-xs text-gray-400">Signature of Lecrupusgod</p>
             <div class="flex justify-center space-x-4 mt-4">
-                <a href="#" class="hover:text-indigo-400"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="hover:text-indigo-400"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="hover:text-indigo-400"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-indigo-400">Facebook</a>
+                <a href="#" class="hover:text-indigo-400">Twitter</a>
+                <a href="#" class="hover:text-indigo-400">Instagram</a>
             </div>
         </div>
     </footer>
@@ -241,183 +217,6 @@
     <div id="message-box" class="fixed bottom-5 right-5 bg-indigo-600 text-white py-3 px-6 rounded-lg shadow-lg transform translate-x-full transition-transform duration-500">
         <p id="message-text"></p>
     </div>
-
-
-    <script>
-        // --- Google Maps Integration ---
-        let map;
-        let directionsService;
-        let directionsRenderer;
-
-        function initMap() {
-            directionsService = new google.maps.DirectionsService();
-            directionsRenderer = new google.maps.DirectionsRenderer();
-            
-            const centerOfEurope = { lat: 48.8566, lng: 15.3522 }; 
-
-            const mapOptions = {
-                zoom: 5,
-                center: centerOfEurope,
-                mapTypeId: 'roadmap',
-                disableDefaultUI: true,
-                zoomControl: true,
-            };
-            
-            map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
-            directionsRenderer.setMap(map);
-        }
-        
-        // --- Main Application Logic ---
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- UI Elements ---
-            const authModal = document.getElementById('auth-modal');
-            const bookingModal = document.getElementById('booking-modal');
-            const loginBtn = document.getElementById('login-btn');
-            const closeAuthModalBtn = document.getElementById('close-auth-modal');
-            const closeBookingModalBtn = document.getElementById('close-booking-modal');
-            const authBackdrop = authModal.querySelector('.modal-backdrop');
-            const bookingBackdrop = bookingModal.querySelector('.modal-backdrop');
-            const bookNowButtons = document.querySelectorAll('.book-now-btn');
-            const authForm = document.getElementById('auth-form');
-            const searchForm = document.getElementById('search-form');
-            const bookingForm = document.getElementById('booking-form');
-            const messageBox = document.getElementById('message-box');
-            const messageText = document.getElementById('message-text');
-            const authLinks = document.getElementById('auth-links');
-            const userInfo = document.getElementById('user-info');
-            const welcomeMessage = document.getElementById('welcome-message');
-            const logoutBtn = document.getElementById('logout-btn');
-            const showRouteBtn = document.getElementById('show-route-btn');
-
-            // --- Google Maps API setup & error handling ---
-            const mapsScript = document.querySelector('script[src*="maps.googleapis.com"]');
-            // Check if a key is present in the script URL. It's not in dev mode.
-            const hasApiKey = mapsScript && mapsScript.src.includes('key=');
-
-            if (!hasApiKey) {
-                console.warn("Google Maps is running in development mode without an API key. Routing feature is disabled. To enable routes, add a valid API key to the script URL.");
-                showRouteBtn.disabled = true;
-                showRouteBtn.textContent = 'API Key Required for Routes';
-                showRouteBtn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
-                showRouteBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
-            }
-
-            // --- Modal Logic ---
-            const openModal = (modal) => {
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modal.querySelector('.modal-backdrop').classList.add('opacity-100');
-                    modal.querySelector('.modal-content').classList.remove('scale-95');
-                    modal.querySelector('.modal-content').classList.add('scale-100');
-                }, 10);
-            };
-
-            const closeModal = (modal) => {
-                modal.querySelector('.modal-backdrop').classList.remove('opacity-100');
-                modal.querySelector('.modal-content').classList.remove('scale-100');
-                modal.querySelector('.modal-content').classList.add('scale-95');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300);
-            };
-            
-            // --- Message Box Logic ---
-            const showMessage = (message) => {
-                messageText.textContent = message;
-                messageBox.classList.remove('translate-x-full');
-                setTimeout(() => {
-                    messageBox.classList.add('translate-x-full');
-                }, 3000); // Hide after 3 seconds
-            };
-
-            // --- Event Listeners ---
-            loginBtn.addEventListener('click', () => openModal(authModal));
-            closeAuthModalBtn.addEventListener('click', () => closeModal(authModal));
-            authBackdrop.addEventListener('click', () => closeModal(authModal));
-            
-            closeBookingModalBtn.addEventListener('click', () => closeModal(bookingModal));
-            bookingBackdrop.addEventListener('click', () => closeModal(bookingModal));
-
-            bookNowButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const destination = e.target.getAttribute('data-destination');
-                    document.getElementById('booking-modal-title').innerText = `Book Your Trip to ${destination}`;
-                    openModal(bookingModal);
-                });
-            });
-
-            // --- Form Handlers (Simulated) ---
-            
-            authForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = document.getElementById('email').value;
-                const username = email.split('@')[0];
-                closeModal(authModal);
-                authLinks.classList.add('hidden');
-                userInfo.classList.remove('hidden');
-                userInfo.classList.add('flex');
-                welcomeMessage.textContent = `Welcome, ${username}!`;
-                showMessage('Login successful!');
-                authForm.reset();
-            });
-            
-            logoutBtn.addEventListener('click', () => {
-                userInfo.classList.add('hidden');
-                userInfo.classList.remove('flex');
-                authLinks.classList.remove('hidden');
-                showMessage('You have been logged out.');
-            });
-
-            searchForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const destination = document.getElementById('destination').value;
-                const searchResultEl = document.getElementById('search-result');
-                searchResultEl.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i>Searching for trips to ${destination || 'anywhere'}...`;
-                setTimeout(() => {
-                    if (destination) {
-                        searchResultEl.innerHTML = `<span class="text-green-600 font-medium"><i class="fas fa-check-circle mr-2"></i>Found 3 amazing packages for ${destination}!</span>`;
-                    } else {
-                        searchResultEl.innerHTML = `<span class="text-gray-600">Showing our top-rated travel packages.</span>`;
-                    }
-                }, 1500);
-            });
-            
-            bookingForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                closeModal(bookingModal);
-                showMessage('Your booking has been confirmed!');
-                bookingForm.reset();
-            });
-
-            // --- Map Route Calculation ---
-            const calculateAndDisplayRoute = () => {
-                const start = document.getElementById('start-point').value;
-                const end = document.getElementById('end-point').value;
-
-                if (!start || !end) {
-                    showMessage("Please enter both a start and end point.");
-                    return;
-                }
-
-                directionsService.route({
-                    origin: start,
-                    destination: end,
-                    travelMode: 'DRIVING'
-                }, (response, status) => {
-                    if (status === 'OK') {
-                        directionsRenderer.setDirections(response);
-                    } else {
-                        showMessage('Directions request failed. Ensure API key is valid and Directions API is enabled. Status: ' + status);
-                    }
-                });
-            };
-
-            // Only add the event listener if routing is enabled (i.e., an API key is present)
-            if (hasApiKey) {
-                showRouteBtn.addEventListener('click', calculateAndDisplayRoute);
-            }
-        });
-    </script>
 
 </body>
 </html>
